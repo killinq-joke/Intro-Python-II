@@ -1,15 +1,7 @@
+from player import Player
 from room import Room
 # Declare all the rooms
 
-answer = input("Would you like to play the game? (yes/no) ")
-if answer.lower().strip() == "yes":
-    answer = input("So... where do you want to go ")
-    if answer.lower().strip() == "north":
-        print("lessgo")
-    else:
-        print("You lost")
-else:
-    print("Too bad!")
 
 room = {
     'outside':  Room("Outside Cave Entrance",
@@ -41,7 +33,7 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-print(room["outside"])
+print(room["outside"].n_to)
 #
 # Main
 #
