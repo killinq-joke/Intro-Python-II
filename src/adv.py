@@ -1,3 +1,5 @@
+import sys
+import cmd
 from player import Player
 from room import Room
 # Declare all the rooms
@@ -39,8 +41,8 @@ print(room["outside"].n_to)
 #
 
 # Make a new player object that is currently in the 'outside' room.
-name = input("What's your name? ")
-player1 = Player(name, "outside")
+player1 = Player(input("What's your name? "), "outside")
+print(player1)
 # Write a loop that:
 #
 # * Prints the current room name
@@ -51,3 +53,11 @@ player1 = Player(name, "outside")
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+def title_screen_selections():
+    option = input("> ")
+    if option.lower().strip() == "play":
+        start_game()
+    elif option.lower().strip() == "help":
+        help_menu()
+    else:
+        sys.exit()
