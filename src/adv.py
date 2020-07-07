@@ -40,8 +40,7 @@ print(room["outside"].n_to)
 
 # Make a new player object that is currently in the 'outside' room.
 name = input("What's your name? ")
-player1 = Player(name, "location")
-print(player1)
+player1 = Player(name, "outside")
 # Write a loop that:
 #
 # * Prints the current room name
