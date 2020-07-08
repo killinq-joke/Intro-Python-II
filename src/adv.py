@@ -1,5 +1,6 @@
 import sys
 import cmd
+import os
 from player import Player
 from room import Room
 # Declare all the rooms
@@ -53,11 +54,13 @@ print(player1)
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-def title_screen_selections():
-    option = input("> ")
-    if option.lower().strip() == "play":
-        start_game()
-    elif option.lower().strip() == "help":
-        help_menu()
-    else:
-        sys.exit()
+
+print(room[player1.location].description)
+
+
+def start_game():
+    print(f"Your location: {print(player1.location)}")
+
+
+if __name__ == "__main__":
+    start_game()
