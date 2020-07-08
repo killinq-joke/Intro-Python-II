@@ -1,6 +1,3 @@
-import sys
-import cmd
-import os
 from player import Player
 from room import Room
 # Declare all the rooms
@@ -55,11 +52,18 @@ print(player1)
 #
 # If the user enters "q", quit the game.
 
-print(room[player1.location].description)
+print()
 
 
 def start_game():
-    print(f"Your location: {player1.location}")
+    print(f"You are currently here: {player1.location}")
+    print(f"{room[player1.location].description}")
+
+    while True:
+        direction = input("Where do you want to go? (n/s/e/w) ")
+        if direction != "n" and direction != "s" and direction != "e" and direction != "w":
+            print("Please enter a direction (n/s/e/w) ")
+            continue
 
 
 if __name__ == "__main__":
