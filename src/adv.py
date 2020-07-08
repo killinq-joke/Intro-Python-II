@@ -51,16 +51,17 @@ print(player1)
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-
+a = "n"
 print(hasattr(room[player1.location], "n_to"))
-print(getattr(room[player1.location], "n_to"))
+print(getattr(room[player1.location], f"{a}_to"))
 print(room["foyer"])
 
 def start_game():
 
     while True:
-        print(f"You are currently here: {player1.location}")
-        print(f"{room[player1.location].description}")
+        location = player1.location.lower()
+        print(f"You are currently here: {location}")
+        print(f"{room[location].description}")
 
         direction = input("Where do you want to go? (n/s/e/w) ")
         if direction == "q":
@@ -70,10 +71,10 @@ def start_game():
             print("Please enter a direction (n/s/e/w) ")
         
         else:
-            if hasattr(room[player1.location], f"{direction}_to"):
-                print(getattr(room[player1.location], f"{direction}_to"))
+            if hasattr(room[location], f"{direction}_to"):
+                print(getattr(room[location], f"{direction}_to").name)
                 player1.location = getattr(
-                    room[player1.location], f"{direction}_to")
+                    room[location], f"{direction}_to").name
                 
             else:
                 print("You died")
