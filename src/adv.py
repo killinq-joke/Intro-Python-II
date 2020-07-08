@@ -1,6 +1,8 @@
 from player import Player
 from room import Room
 # Declare all the rooms
+import textwrap
+
 
 
 room = {
@@ -33,14 +35,12 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-print(room["outside"].n_to)
 #
 # Main
 #
 
 # Make a new player object that is currently in the 'outside' room.
 player1 = Player(input("What's your name? "), "outside")
-print(player1)
 # Write a loop that:
 #
 # * Prints the current room name
@@ -51,10 +51,6 @@ print(player1)
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-a = "n"
-print(hasattr(room[player1.location], "n_to"))
-print(getattr(room[player1.location], f"{a}_to"))
-print(room["foyer"])
 
 
 def start_game():
@@ -62,12 +58,14 @@ def start_game():
     while True:
         location = player1.location
         print(f"You are currently here: {location}")
-        print(f"{room[location].description}")
+        for line in textwrap.wrap(room[location].description):
+            print(line)
 
         direction = input("Where do you want to go? (n/s/e/w) ")
         if direction == "q":
             print("Au revoir")
             break
+
         elif direction != "n" and direction != "s" and direction != "e" and direction != "w":
             print("Please enter a direction (n/s/e/w) ")
 
