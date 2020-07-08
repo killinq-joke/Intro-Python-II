@@ -56,6 +56,7 @@ print(hasattr(room[player1.location], "n_to"))
 print(getattr(room[player1.location], f"{a}_to"))
 print(room["foyer"])
 
+
 def start_game():
 
     while True:
@@ -69,13 +70,13 @@ def start_game():
             break
         elif direction != "n" and direction != "s" and direction != "e" and direction != "w":
             print("Please enter a direction (n/s/e/w) ")
-        
+
         else:
             if hasattr(room[location], f"{direction}_to"):
                 print(getattr(room[location], f"{direction}_to").name)
                 player1.location = getattr(
                     room[location], f"{direction}_to").name
-                
+
             else:
                 print("You died")
                 break
