@@ -52,18 +52,32 @@ print(player1)
 #
 # If the user enters "q", quit the game.
 
-print()
-
+print(hasattr(room[player1.location], "n_to"))
+print(getattr(room[player1.location], "n_to"))
+print(room["foyer"])
 
 def start_game():
-    print(f"You are currently here: {player1.location}")
-    print(f"{room[player1.location].description}")
 
     while True:
+        print(f"You are currently here: {player1.location}")
+        print(f"{room[player1.location].description}")
+
         direction = input("Where do you want to go? (n/s/e/w) ")
-        if direction != "n" and direction != "s" and direction != "e" and direction != "w":
+        if direction == "q":
+            print("Au revoir")
+            break
+        elif direction != "n" and direction != "s" and direction != "e" and direction != "w":
             print("Please enter a direction (n/s/e/w) ")
-            continue
+        
+        else:
+            if hasattr(room[player1.location], f"{direction}_to"):
+                print(getattr(room[player1.location], f"{direction}_to"))
+                player1.location = getattr(
+                    room[player1.location], f"{direction}_to")
+                
+            else:
+                print("You died")
+                break
 
 
 if __name__ == "__main__":
