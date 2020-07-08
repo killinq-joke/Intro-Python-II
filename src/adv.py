@@ -59,7 +59,7 @@ print(room[player1.location].description)
 
 
 def start_game():
-    print(f"Your location: {print(player1.location)}")
+    print(f"Your location: {player1.location}")
 
 
 if __name__ == "__main__":
