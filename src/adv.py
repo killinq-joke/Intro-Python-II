@@ -9,17 +9,17 @@ room = {
     'outside':  Room("outside", "Outside Cave Entrance",
                      "North of you, the cave mount beckons"),
 
-    'foyer':    Room("foyer", "", """Dim light filters in from the south. Dusty
+    'foyer':    Room("foyer", "Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
 
-    'overlook': Room("overlook", "", """A steep cliff appears before you, falling
+    'overlook': Room("overlook", "Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
 the distance, but there is no way across the chasm."""),
 
-    'narrow':   Room("narrow", "", """The narrow passage bends here from west
+    'narrow':   Room("narrow", "Narrow Passage", """The narrow passage bends here from west
 to north. The smell of gold permeates the air."""),
 
-    'treasure': Room("treasure", "", """You've found the long-lost treasure
+    'treasure': Room("treasure", "Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
@@ -57,11 +57,11 @@ def start_game():
 
     while True:
         location = player1.location
-        print(f"You are currently here: {location}")
+        print(f"\nYou are currently here: {room[location]}\n")
         for line in textwrap.wrap(room[location].description):
             print(line)
 
-        direction = input("Where do you want to go? (n/s/e/w) ")
+        direction = input("\nWhere do you want to go? (n/s/e/w) ")
         if direction == "q":
             print("Au revoir")
             break
@@ -71,9 +71,9 @@ def start_game():
 
         else:
             if hasattr(room[location], f"{direction}_to"):
-                print(getattr(room[location], f"{direction}_to").name)
+                print(getattr(room[location], f"{direction}_to").location)
                 player1.location = getattr(
-                    room[location], f"{direction}_to").name
+                    room[location], f"{direction}_to").location
 
             else:
                 print("You died")
