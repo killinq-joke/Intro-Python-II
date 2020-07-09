@@ -9,3 +9,8 @@ class Player:
 
     def __str__(self):
         return f'{self.name}'
+
+    def take_item(self, item):
+        self.items.append(item)
+
+    

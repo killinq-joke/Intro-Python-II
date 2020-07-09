@@ -99,7 +99,7 @@ def start_game():
             else:
                 print("You can't drop an item you don't have")
 
-        elif command == "i":
+        elif command == "i" or command == "inventory":
             print(*player1.items, sep =", ")
 
         elif command != "n" and command != "s" and command != "e" and command != "w":
@@ -107,7 +107,6 @@ def start_game():
 
         else:
             if hasattr(room[current_room], f"{command}_to"):
-                print(getattr(room[current_room], f"{command}_to").location)
                 player1.current_room = getattr(
                     room[current_room], f"{command}_to").location
 
