@@ -4,10 +4,9 @@ from room import Room
 import textwrap
 
 
-
 room = {
     'outside':  Room("outside", "Outside Cave Entrance",
-                     "North of you, the cave mount beckons", ["flashlight"]),
+                     "North of you, the cave mount beckons", ["flashlight", "rock"]),
 
     'foyer':    Room("foyer", "Foyer", """Dim light filters in from the south. Dusty
 passages run north and east.""", ["cutter"]),
@@ -40,7 +39,7 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-player1 = Player(input("What's your name? "), "outside")
+player1 = Player(input("What's your name? "), "outside", [])
 # Write a loop that:
 #
 # * Prints the current room name
@@ -61,19 +60,34 @@ def start_game():
         for line in textwrap.wrap(room[location].description):
             print(line)
 
-        direction = input("\nWhere do you want to go? (n/s/e/w) ")
-        if direction == "q":
+        command = input("\nEnter a command: ")
+        command = command.lower().strip()
+        if command == "q":
             print("Au revoir")
             break
 
-        elif direction != "n" and direction != "s" and direction != "e" and direction != "w":
-            print("Please enter a direction (n/s/e/w) ")
+        elif command == "help":
+            print("Go north: n")
+            print("Go south: s")
+            print("Go east: e")
+            print("Go west: w")
+            print("Examine room: exam")
+            print("Take item: t (item name)")
+
+        elif command == "exam":
+            print(*room[location].items, sep = ", ")
+
+        elif command == f"take":
+            print("plop")
+
+        elif command != "n" and command != "s" and command != "e" and command != "w":
+            print("Please enter a correct command (help) ")
 
         else:
-            if hasattr(room[location], f"{direction}_to"):
-                print(getattr(room[location], f"{direction}_to").location)
+            if hasattr(room[location], f"{command}_to"):
+                print(getattr(room[location], f"{command}_to").location)
                 player1.location = getattr(
-                    room[location], f"{direction}_to").location
+                    room[location], f"{command}_to").location
 
             else:
                 print("You died")
