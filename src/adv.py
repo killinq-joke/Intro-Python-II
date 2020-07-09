@@ -79,7 +79,7 @@ def start_game():
         elif command == "exam":
             print(*room[current_room].items, sep=", ")
 
-        elif command.split(' ', 1)[0] == "get" and command != command.split(' ', 1)[0]:
+        elif command.split(' ', 1)[0] == "get" or command.split(' ', 1)[0] == "take" and command != command.split(' ', 1)[0]:
             item = command.split(" ", 1)[1]
             if item in room[current_room].items:
                 player1.items.append(item)
