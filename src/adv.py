@@ -72,13 +72,14 @@ def start_game():
             print("Go east: e")
             print("Go west: w")
             print("Examine room: exam")
-            print("Take: t")
+            print("Get: get")
+            print("Drop: drop")
             print("Inventory: i")
 
         elif command == "exam":
             print(*room[location].items, sep=", ")
 
-        elif command == "t":
+        elif command == "get":
             item = input("What item do you want to take ")
             if item in room[location].items:
                 player1.items.append(item)
