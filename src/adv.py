@@ -81,7 +81,6 @@ def start_game():
 
         elif command.split(' ', 1)[0] == "get" and command != command.split(' ', 1)[0]:
             item = command.split(" ", 1)[1]
-            print(item)
             if item in room[location].items:
                 player1.items.append(item)
                 room[location].items.remove(item)
@@ -89,6 +88,16 @@ def start_game():
 
             else:
                 print(f"There is no {item} here")
+
+        elif command.split(' ', 1)[0] == "drop" and command != command.split(' ', 1)[0]:
+            item = command.split(" ", 1)[1]
+            if item in player1.items:
+                room[location].items.append(item)
+                player1.items.remove(item)
+                print(f"You dropped: {item}")
+            
+            else:
+                print("You can't drop an item you don't have")
 
         elif command == "i":
             print(*player1.items, sep =", ")
