@@ -79,10 +79,12 @@ def start_game():
         elif command == "exam":
             print(*room[location].items, sep=", ")
 
-        elif command == "get":
-            item = input("What item do you want to take ")
+        elif command.split(' ', 1)[0] == "get" and command != command.split(' ', 1)[0]:
+            item = command.split(" ", 1)[1]
+            print(item)
             if item in room[location].items:
                 player1.items.append(item)
+                room[location].items.remove(item)
                 print(f"You picked: {item}")
 
             else:
