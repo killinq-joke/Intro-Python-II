@@ -24,10 +24,10 @@ Up to this point, you've gotten your feet wet by working on a bunch of small Pyt
 
 ### Day 2 MVP
 
-* Make rooms able to hold multiple items
-* Make the player able to carry multiple items
-* Add items to the game that the user can carry around
-* Add `get [ITEM_NAME]` and `drop [ITEM_NAME]` commands to the parser
+* Make rooms able to hold multiple items x
+* Make the player able to carry multiple items x
+* Add items to the game that the user can carry around x
+* Add `get [ITEM_NAME]` and `drop [ITEM_NAME]` commands to the parser x
 
 ## Specification
 
@@ -35,24 +35,24 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
 
 
 * Add a REPL parser to `adv.py` that accepts directional commands to move the player
-  * After each move, the REPL should print the name and description of the player's current room
-  * Valid commands are `n`, `s`, `e` and `w` which move the player North, South, East or West
-  * The parser should print an error if the player tries to move where there is no room.
+  * After each move, the REPL should print the name and description of the player's current room x
+  * Valid commands are `n`, `s`, `e` and `w` which move the player North, South, East or West x
+  * The parser should print an error if the player tries to move where there is no room. x
 
-* Put the Room class in `room.py` based on what you see in `adv.py`.
+* Put the Room class in `room.py` based on what you see in `adv.py`. x
 
-  * The room should have `name` and `description` attributes.
+  * The room should have `name` and `description` attributes. x
 
   * The room should also have `n_to`, `s_to`, `e_to`, and `w_to` attributes
-    which point to the room in that respective direction.
+    which point to the room in that respective direction. x
 
-* Put the Player class in `player.py`.
-  * Players should have a `name` and `current_room` attributes
+* Put the Player class in `player.py`. x
+  * Players should have a `name` and `current_room` attributes x
 
 
-* Create a file called `item.py` and add an `Item` class in there.
+* Create a file called `item.py` and add an `Item` class in there. x
 
-  * The item should have `name` and `description` attributes.
+  * The item should have `name` and `description` attributes. x
 
      * Hint: the name should be one word for ease in parsing later.
 
